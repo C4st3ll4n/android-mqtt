@@ -1,20 +1,14 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Introdução
+Este projeto é parte de um estudo sobre possibilidades de implementação de serviço de push na Lio.
+Aqui foi implementado um cliente MQTT que se conecta no tópico "lio/inbox". Do lado servidor
+foi usado o RabbitMQ com o plugin MQTT, e as mensagem são postadas na fila "amq.topic", usando routing key
+"lio.inbox"
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# RabbitMQ
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+No diretório rabbitmq estão os arquivos para executar o rabbitmq localmente via docker.
+Só é necessário entrar no diretório e executar:
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+```sh
+docker-compose up
+```
