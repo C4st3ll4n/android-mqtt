@@ -1,8 +1,8 @@
 # Introdução
 Este projeto é parte de um estudo sobre possibilidades de implementação de serviço de push na Lio.
-Aqui foi implementado um cliente MQTT que se conecta no tópico "lio/inbox". Do lado servidor
-foi usado o RabbitMQ com o plugin MQTT, e as mensagem são postadas na fila "amq.topic", usando routing key
-"lio.inbox"
+Aqui foi implementado um cliente MQTT que se conecta no tópico `lio/inbox`. Do lado servidor
+foi usado o RabbitMQ com o plugin MQTT, e as mensagem são postadas na fila `amq.topic`, usando routing key
+`lio.inbox`
 
 # RabbitMQ
 
