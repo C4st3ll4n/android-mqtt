@@ -20,9 +20,9 @@ Também é necessário editar no app o endereço do servidor local na parte do c
 se a mensagem for postada na exchange `amq.topic` com routing key `lio.inbox` ela deverá chegar na Lio. Uma das
 formas é pelo console do RabbitMQ, descrita abaixo:
 
-. Abra o console do RabbitMQ (http://localhost:15672/)
-. Credenciais: guest/guest
-. Vá em exchanges e selecione `amq.topic`
-. Na tela que abrir haverá uma seção chamada `Publish message`
-. Preencha o campo `Routing key` com `lio.inbox` e preencha o payload livremente
-. Clique em `Publish message` e ela deve aparecer na Lio, demonstrando o conceito.
+- Abra o console do RabbitMQ (http://localhost:15672/)
+- Credenciais: guest/guest
+- Vá em exchanges e selecione `amq.topic`
+- Na tela que abrir haverá uma seção chamada `Publish message`
+- Preencha o campo `Routing key` com `lio.inbox` e preencha o payload livremente
+- Clique em `Publish message` e ela deve aparecer na Lio, demonstrando o conceito.
