@@ -2,19 +2,18 @@ package cielo.lio.services
 
 import android.content.Context
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import org.eclipse.paho.android.service.MqttAndroidClient
-import org.eclipse.paho.client.mqttv3.IMqttActionListener
-import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
-import org.eclipse.paho.client.mqttv3.IMqttToken
-import org.eclipse.paho.client.mqttv3.MqttCallback
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions
-import org.eclipse.paho.client.mqttv3.MqttMessage
+import org.eclipse.paho.client.mqttv3.*
 
 class MainActivity : AppCompatActivity(), MqttCallback, IMqttActionListener {
 
+    private val CHANNEL_ID = "LIO"
     private val tag = "MQTTClient"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +40,9 @@ class MainActivity : AppCompatActivity(), MqttCallback, IMqttActionListener {
     override fun messageArrived(topic: String?, message: MqttMessage?) {
         Log.i(tag, "ih chegou mensagem: topico: $topic, texto: $message")
         Toast.makeText(this, "Ih, chegou mensagem: topico: $topic, texto: $message", Toast.LENGTH_SHORT).show()
+        notification(topic,"$message")
     }
+
 
     override fun deliveryComplete(token: IMqttDeliveryToken?) {
         Log.i(tag, "Delivery complete")
@@ -54,5 +55,20 @@ class MainActivity : AppCompatActivity(), MqttCallback, IMqttActionListener {
 
     override fun onFailure(token: IMqttToken?, exception: Throwable?) {
         Log.w(tag, "Connection failed", exception)
+    }
+
+
+
+    fun notification(topic:String?, message:String?) {
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.mipmap.ic_launcher_round)
+            .setContentTitle(topic)
+            .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(this)) {
+            notify(0, builder.build())
+        }
     }
 }
